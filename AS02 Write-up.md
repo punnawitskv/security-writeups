@@ -1,6 +1,6 @@
 # AS02: Security Misconfigurations
 
-Target: http://10.49.x.x:5002  
+Target: http://10.49.x.x:5002       
 Flag: `THM{V3RB0S3_3RR0R_L34K}`
 
 ---
@@ -52,7 +52,7 @@ gobuster dir \
 -t 30
 ```
 
-จากการสแกน พบ endpoint ที่น่าสนใจดังนี้
+จากการสแกนพบ endpoint ที่น่าสนใจดังนี้
 
 ```bash
 /api/user/me
@@ -65,7 +65,7 @@ gobuster dir \
 
 ## 5. การเรียกใช้งาน Endpoint ที่ผิดพลาด
 
-เมื่อทดลองเรียก endpoint ที่พบ ด้วยคำสั่ง
+เมื่อทดลองเรียก endpoint ที่พบด้วยคำสั่ง
 
 ```bash
 curl -i http://10.49.x.x:5002/api/user/me
