@@ -1,13 +1,13 @@
 # AS02: Security Misconfigurations
 
-Target: http://10.49.156.80:5002  
+Target: http://10.49.x.x:5002  
 Flag: `THM{V3RB0S3_3RR0R_L34K}`
 
 ---
 
 ## 1. บทนำ
 
-แลปนี้เป็นการฝึกทดสอบช่องโหว่ประเภท Security Misconfiguration ซึ่งเกิดจากการตั้งค่าระบบไม่เหมาะสม โดยในแลปนี้พบว่า API ที่เกี่ยวกับการจัดการผู้ใช้ถูกเปิดให้เข้าถึงได้โดยไม่ต้องมีการยืนยันตัวตน และระบบยังเปิดการแสดง error แบบละเอียด (verbose error) ทำให้ข้อมูลสำคัญรั่วไหลออกมาได้
+แลปนี้เป็นการฝึกทดสอบช่องโหว่ประเภท `Security Misconfiguration` ซึ่งเกิดจากการตั้งค่าระบบไม่เหมาะสม โดยในแลปนี้พบว่า API ที่เกี่ยวกับการจัดการผู้ใช้ถูกเปิดให้เข้าถึงได้โดยไม่ต้องมีการยืนยันตัวตน และระบบยังเปิดการแสดง error แบบละเอียด (verbose error) ทำให้ข้อมูลสำคัญรั่วไหลออกมาได้
 
 ---
 
@@ -32,7 +32,7 @@ Retrieve user information by ID. User ID must be numeric.
 
 ```bash
 for i in {1..10}; do 
-  curl -s http://10.49.156.80:5002/api/user/$i
+  curl -s http://10.49.x.x:5002/api/user/$i
 done
 ```
 
@@ -47,7 +47,7 @@ done
 
 ```bash
 gobuster dir \
--u http://10.49.156.80:5002/ \
+-u http://10.49.x.x:5002/ \
 -w /usr/share/seclists/Discovery/Web-Content/api/api-endpoints.txt \
 -t 30
 ```
@@ -68,7 +68,7 @@ gobuster dir \
 เมื่อทดลองเรียก endpoint ที่พบ ด้วยคำสั่ง
 
 ```bash
-curl -i http://10.49.156.80:5002/api/user/me
+curl -i http://10.49.x.x:5002/api/user/me
 ```
 
 ระบบตอบกลับด้วย error และแสดงข้อมูล debug ออกมา
@@ -84,9 +84,7 @@ curl -i http://10.49.156.80:5002/api/user/me
 
 จาก error message ที่ระบบแสดง ทำให้สามารถเห็น flag ได้ดังนี้
 
-```bash
-THM{V3RB0S3_3RR0R_L34K}
-```
+`THM{V3RB0S3_3RR0R_L34K}`
 
 ---
 
