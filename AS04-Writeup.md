@@ -64,9 +64,15 @@ const KEY_SIZE = 128;
 
 ## 4. การถอดรหัสข้อมูล
 
-นำ encrypted string จากหน้าเว็บ และ key ที่พบในไฟล์ decrypt.js
-ไปถอดรหัสด้วย AES-128-ECB หลังจาก decode Base64
-จนได้ข้อมูล plaintext
+ถอดรหัสข้อมูลด้วย `CyberChef` จากข้อมูลดังนี้
+
+Recipe
+1. From Base64
+2. AES Decrypt
+- Key (UTF8): my-secret-key-16
+- Mode: ECB
+- Input: Raw
+- Output: Raw
 
 ```bash
 CONFIDENTIAL: The admin password is 'admin123'. Flag: THM{CRYPTO_FAILURE_H4RDCOD3D_K3Y}
