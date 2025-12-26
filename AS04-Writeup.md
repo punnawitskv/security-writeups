@@ -66,15 +66,16 @@ const KEY_SIZE = 128;
 
 ถอดรหัสข้อมูลด้วย `CyberChef` จากข้อมูลดังนี้
 
-Recipe
-    1. `From Base64`
-    2. `AES Decrypt`
-        - Key (`UTF8`): `my-secret-key-16`
-        - Mode: `ECB`
-        - Input: `Raw`
-        - Output: `Raw`
-Input
-    `Nzd42HZGgUIUlpILZRv0jeIXp1WtCErwR+j/w/lnKbmug31opX0BWy+pwK92rkhjwdf94mgHfLtF26X6B3pe2fhHXzIGnnvVruH7683KwvzZ6+QKybFWaedAEtknYkhe`
+Recipe:
+1. `From Base64`
+2. `AES Decrypt`
+    - Key (`UTF8`): `my-secret-key-16`
+    - Mode: `ECB`
+    - Input: `Raw`
+    - Output: `Raw`
+
+Input:
+`Nzd42HZGgUIUlpILZRv0jeIXp1WtCErwR+j/w/lnKbmug31opX0BWy+pwK92rkhjwdf94mgHfLtF26X6B3pe2fhHXzIGnnvVruH7683KwvzZ6+QKybFWaedAEtknYkhe`
 
 ```bash
 CONFIDENTIAL: The admin password is 'admin123'. Flag: THM{CRYPTO_FAILURE_H4RDCOD3D_K3Y}
