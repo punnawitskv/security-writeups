@@ -54,10 +54,9 @@ gobuster dir \
 
 จากการสแกนพบ endpoint ที่น่าสนใจดังนี้
 
-```bash
-/api/user/me
-/api/user/current
-```
+```/api/user/me```
+
+```/api/user/current```
 
 ซึ่งปกติแล้ว endpoint ลักษณะนี้ควรถูกเรียกใช้งานได้เฉพาะผู้ใช้ที่ login แล้วเท่านั้น
 
