@@ -1,1 +1,1 @@
-# Write-up about TryHackMe -> Cyber Security 101 -> OWASP Top 10 (2025) -> OWASP Top 10 2025: Application Design Flaws
+# Security Writeups
