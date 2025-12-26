@@ -1,6 +1,6 @@
 # AS02: Security Misconfigurations
 
-Target: http://10.49.x.x:5002       
+Target: http://10.49.x.x:5002   
 Flag: `THM{V3RB0S3_3RR0R_L34K}`
 
 ---
