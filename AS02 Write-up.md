@@ -74,7 +74,7 @@ curl -i http://10.49.156.80:5002/api/user/me
 ระบบตอบกลับด้วย error และแสดงข้อมูล debug ออกมา
 ซึ่งใน error message มี flag แสดงอยู่โดยตรง
 
-```bash
+```json
 "debug_info": { "flag": "THM{V3RB0S3_3RR0R_L34K}" }, "error": "Invalid user ID format: me. Flag: THM{V3RB0S3_3RR0R_L34K}", "traceback": "Traceback (most recent call last):\n File \"/app/app.py\", line 21, in get_user\n raise ValueError(f\"Invalid user ID format: {user_id}. Flag: {FLAG}\")\nValueError: Invalid user ID format: me. Flag: THM{V3RB0S3_3RR0R_L34K}\n"
 ```
 
