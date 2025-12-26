@@ -21,8 +21,7 @@ GET /api/user/123
 Retrieve user information by ID. User ID must be numeric.
 ```
 
-จากข้อความข้างต้น ระบบมีการบอกว่า `user_id` ต้องเป็นตัวเลข  
-ซึ่งถือเป็นการเปิดเผยรายละเอียดภายในของระบบให้ผู้ใช้งานทั่วไปเห็น
+จากข้อความข้างต้น ระบบมีการบอกว่า `user_id` ต้องเป็นตัวเลข ซึ่งถือเป็นการเปิดเผยรายละเอียดภายในของระบบให้ผู้ใช้งานทั่วไปเห็น
 
 ---
 
@@ -38,6 +37,14 @@ done
 
 ผลลัพธ์คือระบบตอบกลับข้อมูลผู้ใช้ทุกครั้ง แม้จะไม่ได้ทำการ login หรือยืนยันตัวตนใดๆ
 แสดงให้เห็นว่า API ไม่มีการป้องกันการเข้าถึง (Missing Authentication)
+
+```bash
+{ "email": "john@example.com", "id": "1", "name": "John Doe" }
+{ "email": "john@example.com", "id": "2", "name": "John Doe" }
+{ "email": "john@example.com", "id": "3", "name": "John Doe" }
+...
+{ "email": "john@example.com", "id": "10", "name": "John Doe" }
+```
 
 ---
 
