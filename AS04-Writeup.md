@@ -66,7 +66,7 @@ const KEY_SIZE = 128;
 
 ถอดรหัสข้อมูลด้วย `CyberChef` จากข้อมูลดังนี้
 
-Recipe:
+Recipe: 
 1. `From Base64`
 2. `AES Decrypt`
     - Key (`UTF8`): `my-secret-key-16`
@@ -74,7 +74,7 @@ Recipe:
     - Input: `Raw`
     - Output: `Raw`
 
-Input:
+Input:  
 `Nzd42HZGgUIUlpILZRv0jeIXp1WtCErwR+j/w/lnKbmug31opX0BWy+pwK92rkhjwdf94mgHfLtF26X6B3pe2fhHXzIGnnvVruH7683KwvzZ6+QKybFWaedAEtknYkhe`
 
 ```bash
