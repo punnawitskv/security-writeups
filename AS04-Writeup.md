@@ -48,7 +48,7 @@ curl http://10.48.178.175:5004
 curl http://10.48.178.175:5004/static/js/decrypt.js
 ```
 
-พบว่ามีการกำหนดค่า secret key และโหมดการเข้ารหัสไว้ในไฟล์ JavaScript ดังนี้ ซึ่งถือเป็นความผิดพลาดด้านความปลอดภัยเนื่องจาก key ไม่ควรถูกเก็บไว้ฝั่ง client และโหมด ECB เป็นโหมดที่ไม่ปลอดภัย
+พบว่ามีการกำหนดค่า secret key และโหมดการเข้ารหัสไว้ในไฟล์ JavaScript ดังนี้
 
 ```bash
 // Configuration
@@ -56,6 +56,8 @@ const SECRET_KEY = "my-secret-key-16";
 const ENCRYPTION_MODE = "ECB";
 const KEY_SIZE = 128;
 ```
+
+จากข้อมูลดังกล่าวถือเป็นความผิดพลาดด้านความปลอดภัยเนื่องจาก key ไม่ควรถูกเก็บไว้ฝั่ง client และโหมด ECB เป็นโหมดที่ไม่ปลอดภัย
 
 ---
 
@@ -82,9 +84,13 @@ Input:
 CONFIDENTIAL: The admin password is 'admin123'. Flag: THM{CRYPTO_FAILURE_H4RDCOD3D_K3Y}
 ```
 
+ซึ่งเนื้อหาดังกล่าวถือเป็นข้อมูลที่เป็นความลับและผู้อื่นไม่ควรสามารถเข้าถึง
+
 ---
 
 ## 5. Flag ที่ได้
+
+จาก plaintext ที่ได้ ทำให้ได้รับ flag ดังนี้
 
 `THM{CRYPTO_FAILURE_H4RDCOD3D_K3Y}`
 
