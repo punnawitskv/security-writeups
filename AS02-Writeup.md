@@ -55,7 +55,7 @@ error ดังกล่าวระบุว่า `user_id` นั้นไม
 
 ## 4. Flag ที่ได้
 
-จาก error message ที่ระบบแสดง ทำให้สามารถเห็น flag ได้ดังนี้
+จาก error message ที่ระบบแสดง ทำให้ได้รับ flag ได้ดังนี้
 
 `THM{V3RB0S3_3RR0R_L34K}`
 
