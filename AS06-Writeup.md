@@ -17,7 +17,7 @@ Flag: `THM{1NS3CUR3_D35IGN_4SSUMPT10N}`
 
 เมื่อเข้าถึงหน้าเว็บหลักของระบบ จะพบหน้า Landing Page ที่แสดงข้อความดังนี้
 
-> SecureChat is designed exclusively for mobile devices.
+`SecureChat is designed exclusively for mobile devices.`
 
 จากการตรวจสอบเบื้องต้นพบว่า:
 - ระบบตอบกลับ HTTP request ตามปกติ
