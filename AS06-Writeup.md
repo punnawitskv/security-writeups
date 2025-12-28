@@ -7,9 +7,7 @@ Flag: `THM{1NS3CUR3_D35IGN_4SSUMPT10N}`
 
 ## 1. บทนำ
 
-แลปนี้เป็นการฝึกทดสอบช่องโหว่ประเภท `Insecure Design` ซึ่งเกิดจากการออกแบบระบบโดยมีสมมติฐานที่ผิดพลาด  
-ระบบ SecureChat ถูกออกแบบโดยเชื่อว่ามีเพียง Mobile Application เท่านั้นที่สามารถเข้าถึง Backend API ได้  
-แต่ไม่ได้มีการบังคับใช้การยืนยันตัวตน (Authentication) และการกำหนดสิทธิ์ (Authorization) ที่ฝั่ง server อย่างเหมาะสม
+แลปนี้เป็นการฝึกทดสอบช่องโหว่ประเภท `Insecure Design` ซึ่งเกิดจากการออกแบบระบบโดยมีสมมติฐานที่ผิดพลาด ระบบ SecureChat ถูกออกแบบโดยเชื่อว่ามีเพียง Mobile Application เท่านั้นที่สามารถเข้าถึง Backend API ได้ แต่ไม่ได้มีการบังคับใช้การยืนยันตัวตน (Authentication) และการกำหนดสิทธิ์ (Authorization) ที่ฝั่ง server อย่างเหมาะสม
 
 ---
 
@@ -20,8 +18,9 @@ Flag: `THM{1NS3CUR3_D35IGN_4SSUMPT10N}`
 `SecureChat is designed exclusively for mobile devices.`
 
 จากการตรวจสอบเบื้องต้นพบว่า:
+
 - ระบบตอบกลับ HTTP request ตามปกติ
-- ไม่มีการบังคับ login หรือ token ใด ๆ
+- ไม่มีการบังคับ login หรือ token ใดๆ
 - ไม่มีการ block การเข้าถึงจาก browser
 
 สิ่งนี้แสดงให้เห็นว่าระบบอาศัยเพียง “สมมติฐาน” ว่าผู้ใช้จะเป็น mobile client แทนการบังคับใช้ security control จริง
@@ -30,8 +29,7 @@ Flag: `THM{1NS3CUR3_D35IGN_4SSUMPT10N}`
 
 ## 3. การทดสอบสมมติฐาน Mobile-Only
 
-เนื่องจาก Mobile Application ใช้ HTTP protocol เช่นเดียวกับ browser  
-จึงทำการปลอม User-Agent เพื่อทดสอบว่าระบบแยก client อย่างไร
+เนื่องจาก Mobile Application ใช้ HTTP protocol เช่นเดียวกับ browser จึงทำการปลอม User-Agent เพื่อทดสอบว่าระบบแยก client อย่างไร
 
 ```bash
 curl -i -H "User-Agent: SecureChat/1.0 (Android)" http://10.x.x.x:5005/
@@ -86,31 +84,29 @@ curl -i http://10.x.x.x:5005/api/users
 
 ## 5. การวิเคราะห์ Message Endpoint
 
-จากชื่อแอป SecureChat และข้อมูลผู้ใช้ที่ถูกเปิดเผย สามารถสันนิษฐานได้ว่า message ถูกผูกกับ user ตามรูปแบบ REST API
+จากข้อมูลที่ได้ในขั้นก่อนหน้า พบว่าระบบเปิดเผยรายชื่อผู้ใช้ผ่าน endpoint `/api/users` ซึ่งแสดงให้เห็นว่า resource ต่างๆ ในระบบอ้างอิงผู้ใช้ด้วย `username` เช่น `admin`, `user1`, และ `user2`
 
-เมื่อทดสอบ endpoint รวมดังนี้
+เนื่องจาก SecureChat เป็นแอปพลิเคชันสำหรับรับส่งข้อความ จึงสามารถคาดได้ว่า backend จะมี API สำหรับจัดการ message โดยผูก message กับผู้ใช้แต่ละรายตามแนวคิดของ REST API
+
+จึงทำการทดสอบ endpoint รวมสำหรับ message ด้วย `curl` ดังนี้
 
 ```bash
 curl -i http://10.x.x.x:5005/api/messages
 ```
 
-ระบบตอบกลับด้วย 404 Not Found ซึ่งบ่งชี้ว่า messages น่าจะถูกเข้าถึงผ่าน path ในรูปแบบ /api/messages/<username>
+ระบบตอบกลับด้วย 404 Not Found ซึ่งบ่งชี้ว่าไม่มี endpoint สำหรับเรียกดู messages ทั้งหมดในครั้งเดียว และ messages น่าจะถูกออกแบบให้เข้าถึงแบบแยกตามผู้ใช้
 
 ---
 
 # 6. การเข้าถึงข้อมูลของ Admin โดยไม่ได้รับอนุญาต
 
-จากรายชื่อผู้ใช้ที่ได้จาก /api/users จึงทำการทดสอบเข้าถึง messages ของผู้ใช้ระดับ admin โดยตรง
+จากโครงสร้างข้อมูลผู้ใช้ที่ถูกเปิดเผยก่อนหน้านี้ จึงทำการทดสอบ endpoint ในรูปแบบ /api/messages/<username> โดยจากรายชื่อผู้ใช้ที่ได้จาก /api/users จึงทำการทดสอบเข้าถึง messages ของผู้ใช้ระดับ admin โดยตรง ด้วย `curl` ดังนี้
 
 ```bash
 curl -i http://10.x.x.x:5005/api/messages/admin
 ```
 
-ผลลัพธ์:
-
-- ได้ 200 OK
-- สามารถเข้าถึงข้อความของ admin ได้โดยไม่ต้องยืนยันตัวตน
-- พบข้อมูลสำคัญใน message
+พบว่าระบบตอบกลับด้วยเนื้อหาดังนี้
 
 ```bash
 {
@@ -123,6 +119,9 @@ curl -i http://10.x.x.x:5005/api/messages/admin
     "user": "admin"
 }
 ```
+
+จากเนื้อหาดังกล่าวหมายความว่าเราสามารถเข้าถึงข้อความของ admin และข้อมูลสำคัญใน message ได้โดยไม่ต้องยืนยันตัวตน
+
 ## 7. Flag ที่ได้
 
 จากการเข้าถึงข้อความของ admin ทำให้ได้ flag ดังนี้

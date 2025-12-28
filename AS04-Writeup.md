@@ -13,13 +13,13 @@ Flag: `THM{CRYPTO_FAILURE_H4RDCOD3D_K3Y}`
 
 ## 2. การสำรวจหน้าเว็บ
 
-ตรวจสอบเว็บไซต์ด้วย `curl` ดังนี้
+ตรวจสอบเว็บไซต์ด้วยคำสั่ง `curl` ดังนี้
 
 ```bash
 curl http://10.x.x.x:5004
 ```
 
-พบว่ามีการแสดง `encrypted document` และมีการโหลดไฟล์ JavaScript ชื่อ `decrypt.js` จากฝั่ง client
+ระบบมีการแสดงเนื้อหาดังนี้
 
 ```bash
 <body>
@@ -37,6 +37,8 @@ curl http://10.x.x.x:5004
     <script src="/static/js/decrypt.js"></script>
 </body>
 ```
+
+จากเนื้อหาดังกล่าว มีการแสดง `encrypted document` และมีการโหลดไฟล์ JavaScript ชื่อ `decrypt.js` จากฝั่ง client
 
 ---
 
@@ -78,13 +80,13 @@ Input:
 
 `Nzd42HZGgUIUlpILZRv0jeIXp1WtCErwR+j/w/lnKbmug31opX0BWy+pwK92rkhjwdf94mgHfLtF26X6B3pe2fhHXzIGnnvVruH7683KwvzZ6+QKybFWaedAEtknYkhe`
 
-จะได้ plaintext ดังนี้
+หลังจากทำการถอดรหัส จะได้ plaintext ดังนี้
 
 ```bash
 CONFIDENTIAL: The admin password is 'admin123'. Flag: THM{CRYPTO_FAILURE_H4RDCOD3D_K3Y}
 ```
 
-ซึ่งเนื้อหาดังกล่าวถือเป็นข้อมูลที่เป็นความลับและผู้อื่นไม่ควรสามารถเข้าถึง
+เนื้อหาดังกล่าวถือเป็นข้อมูลที่เป็นความลับและผู้อื่นไม่ควรสามารถเข้าถึง
 
 ---
 

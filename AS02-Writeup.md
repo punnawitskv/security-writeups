@@ -21,7 +21,7 @@ GET /api/user/123
 Retrieve user information by ID. User ID must be numeric.
 ```
 
-จากข้อความข้างต้น ระบบมีการบอกว่า `user_id` ต้องเป็นตัวเลข ซึ่งถือเป็นการเปิดเผยรายละเอียดภายในของระบบให้ผู้ใช้งานทั่วไปเห็น
+ข้อความข้างต้นระบุว่า `user_id` ต้องเป็นตัวเลข ซึ่งถือเป็นการเปิดเผยรายละเอียดภายในของระบบให้ผู้ใช้งานทั่วไปเห็น
 
 ---
 
@@ -33,7 +33,7 @@ Retrieve user information by ID. User ID must be numeric.
 curl -i http://10.x.x.x:5002/api/user/test
 ```
 
-พบว่าระบบตอบกลับด้วย error และแสดงข้อมูล debug ออกมาดังนี้
+พบว่าระบบตอบกลับด้วย error message และแสดงข้อมูล debug ออกมาดังนี้
 
 ```bash
 {
@@ -49,7 +49,7 @@ curl -i http://10.x.x.x:5002/api/user/test
 }
 ```
 
-error ดังกล่าวระบุว่า `user_id` นั้นไม่ใช่ตัวเลข
+error message ดังกล่าวระบุว่า `user_id` นั้นไม่ใช่ตัวเลข
 
 ---
 
